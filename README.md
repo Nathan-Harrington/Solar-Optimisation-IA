@@ -9,3 +9,4 @@ A household solar optimisation project
 
 ## Work Log
 Date | Description | Version
+-----|-------------|--------|
