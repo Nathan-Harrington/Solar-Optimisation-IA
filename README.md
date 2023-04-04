@@ -10,3 +10,4 @@ A household solar optimisation project
 ## Work Log
 Date | Description | Version
 -----|-------------|--------|
+4.4.23| Initial commit| v0.1.0
