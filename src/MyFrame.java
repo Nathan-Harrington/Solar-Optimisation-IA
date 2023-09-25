@@ -9,7 +9,6 @@ public class MyFrame extends JFrame {
         this.setTitle("Solar Optimisation Application");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
         //Sets Icon
         ImageIcon image = new ImageIcon("images/icon.png");
         this.setIconImage(image.getImage());
