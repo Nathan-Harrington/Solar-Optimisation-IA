@@ -9,5 +9,6 @@ public class Main {
 
         //Adds Components to Window
         window1.add(header1);
+        window1.setVisible(true);
     }
 }

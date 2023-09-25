@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class MyLabel extends JLabel {
     public MyLabel(){
-        //this.setBackground(Color.white);
+        this.setForeground(Color.white);
         this.setText("Dashboard");
     }
 }
