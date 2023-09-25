@@ -5,7 +5,8 @@ public class Main {
         //Instantiates Window
         MyFrame window1 = new MyFrame();
         //Instantiates Header
-        MyLabel header1 = new MyLabel();
+        TitleLabel header1 = new TitleLabel();
+        header1.setText("Dashboard");
 
         //Adds Components to Window
         window1.add(header1);

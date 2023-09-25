@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class MyFrame extends JFrame {
@@ -7,6 +8,7 @@ public class MyFrame extends JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("Solar Optimisation Application");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 
         //Sets Icon
         ImageIcon image = new ImageIcon("images/icon.png");
