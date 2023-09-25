@@ -1,7 +1,13 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import javax.swing.*;
+
 public class Main {
     public static void main(String[] args) {
+        //Instantiates Window
         MyFrame window1 = new MyFrame();
+        //Instantiates Header
+        MyLabel header1 = new MyLabel();
+
+        //Adds Components to Window
+        window1.add(header1);
     }
 }
