@@ -6,7 +6,9 @@ A household solar optimisation project
 ## Road Map
 - [x] Initialise repo
 - [x] First repo commit
-- [ ] Configure Layout of Dashboard
+- [x] Configure Layout of Dashboard
+- [ ] Ensure OOPness (am I appropriately structuring code?)
+- [ ] SetUp API data
 
 ## Work Log
 | Date    | Description    | Version |
