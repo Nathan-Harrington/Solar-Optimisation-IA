@@ -9,8 +9,10 @@ A household solar optimisation project
 - [x] Configure Layout of Dashboard
 - [ ] Ensure OOPness (am I appropriately structuring code?)
 - [ ] SetUp API data
+- [ ] Encapsulate Classes and add Getters and Setters
 
 ## Work Log
 | Date    | Description    | Version |
 |---------|----------------|---------|
 | 25.9.23 | Initial commit | v0.1.0  |
+| 26.9.23 | Dshbrd Layout  | v0.1.1  |
