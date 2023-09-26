@@ -17,10 +17,7 @@ public class Scheduler {
         headerPanel1.add(header1);
 
         //Adds Components to Window
-        schedulerwindow.add(headerPanel1);
-        Dashboard.window1.add(schedulerwindow);
-    }
-    public static void SchedulerOn(){
-        schedulerwindow.setVisible(true);
+        schedulerwindow.add(headerPanel1, BorderLayout.NORTH);
+        Main.window1.add(schedulerwindow);
     }
 }

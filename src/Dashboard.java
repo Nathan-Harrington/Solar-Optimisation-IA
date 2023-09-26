@@ -8,7 +8,6 @@ public class Dashboard {
     //Instantiates Button
     static SchedulerButton takeToScheduler = new SchedulerButton("Scheduler"); //Declare Button Publicly
     static RefreshPVButton refreshPVMetrics = new RefreshPVButton("Refresh PV Metrics"); //Declare Button Publicly
-    static DashboardFrame window1 = new DashboardFrame();
     static JPanel dashboardwindow = new JPanel(new BorderLayout());
     public Dashboard() {
         //Instantiates Window
@@ -43,16 +42,10 @@ public class Dashboard {
         dashboardwindow.add(decorativePanel2, BorderLayout.EAST);
         dashboardwindow.add(decorativePanel3, BorderLayout.SOUTH);
 
-        window1.add(dashboardwindow);
-        window1.setVisible(true);
+        Main.window1.add(dashboardwindow);
+        Main.window1.setVisible(true);
 
 
     }
-    public DashboardFrame ReturnFrame(){
-        return window1;
-    }
-    public static void SchedulerOff(){
-        dashboardwindow.setVisible(false);
-        Scheduler.SchedulerOn();
-    }
+
 }

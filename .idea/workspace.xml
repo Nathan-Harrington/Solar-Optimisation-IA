@@ -5,21 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="420dab9b-564b-4cc0-8b86-3fb8609c4d11" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SchedulerFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/API.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CenterContainerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/CenterContainerPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DashboardFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DecorativePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/DecorativePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HeaderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/HeaderPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DashboardFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MetricPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/MetricPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RefreshPVButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RefreshPVButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SchedulerButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchedulerButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ToolBarPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/ToolBarPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +78,7 @@
       <updated>1695637756329</updated>
       <workItem from="1695637757357" duration="6609000" />
       <workItem from="1695691773423" duration="12923000" />
-      <workItem from="1695714861694" duration="8414000" />
+      <workItem from="1695714861694" duration="9274000" />
     </task>
     <servers />
   </component>

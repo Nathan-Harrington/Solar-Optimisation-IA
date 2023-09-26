@@ -1,8 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class DashboardFrame extends JFrame {
-    public DashboardFrame(){ //Constructor code needs to be written to be personalised
+public class Frame extends JFrame {
+    public Frame(){ //Constructor code needs to be written to be personalised
         //Creates Window
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("Solar Optimisation Application");
