@@ -1,17 +1,19 @@
+import DashboardPanelsandAPI.*;
+
+import javax.swing.*;
 import java.awt.*;
-import java.net.*;
-import java.net.URL;
-import java.util.Scanner;
 
 public class Dashboard {
     //COULD MAKE THIS MAIN CLASS ITS OWN DASHBOARD CLASS WHICH IS THEN CALLED IN THE MAIN CLASS WHICH WOULD HAVE TO BE MADE AGAIN
     //Instantiates Button
     static SchedulerButton takeToScheduler = new SchedulerButton("Scheduler"); //Declare Button Publicly
     static RefreshPVButton refreshPVMetrics = new RefreshPVButton("Refresh PV Metrics"); //Declare Button Publicly
+    static DashboardFrame window1 = new DashboardFrame();
+    static JPanel dashboardwindow = new JPanel(new BorderLayout());
     public Dashboard() {
         //Instantiates Window
         API.QueryAPI();
-        DashboardFrame window1 = new DashboardFrame();
+
 
         //Instantiates Panels
         HeaderPanel headerPanel1 = new HeaderPanel();
@@ -35,12 +37,22 @@ public class Dashboard {
         centerContainerPanel1.add(metricPanel, BorderLayout.CENTER);
 
         //Adds Panel to Window
-        window1.add(headerPanel1, BorderLayout.NORTH); //Formatted to top
-        window1.add(centerContainerPanel1);
-        window1.add(decorativePanel1, BorderLayout.WEST);
-        window1.add(decorativePanel2, BorderLayout.EAST);
-        window1.add(decorativePanel3, BorderLayout.SOUTH);
+        dashboardwindow.add(headerPanel1, BorderLayout.NORTH); //Formatted to top
+        dashboardwindow.add(centerContainerPanel1);
+        dashboardwindow.add(decorativePanel1, BorderLayout.WEST);
+        dashboardwindow.add(decorativePanel2, BorderLayout.EAST);
+        dashboardwindow.add(decorativePanel3, BorderLayout.SOUTH);
 
+        window1.add(dashboardwindow);
         window1.setVisible(true);
+
+
+    }
+    public DashboardFrame ReturnFrame(){
+        return window1;
+    }
+    public static void SchedulerOff(){
+        dashboardwindow.setVisible(false);
+        Scheduler.SchedulerOn();
     }
 }

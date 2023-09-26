@@ -6,6 +6,7 @@ public class SchedulerButton extends JButton {
     public SchedulerButton(String text){
         this.setPreferredSize(new Dimension(200,75));
         this.addActionListener(e -> System.out.println("input 1 received"));
+        this.addActionListener(e -> Dashboard.SchedulerOff());
         this.setText(text);
 
         //Styling

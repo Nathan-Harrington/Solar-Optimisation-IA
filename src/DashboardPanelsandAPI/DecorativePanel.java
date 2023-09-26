@@ -1,5 +1,6 @@
+package DashboardPanelsandAPI;
+
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class DecorativePanel extends JPanel {

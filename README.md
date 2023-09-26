@@ -8,7 +8,7 @@ A household solar optimisation project
 - [x] First repo commit
 - [x] Configure Layout of Dashboard
 - [ ] Ensure OOPness (am I appropriately structuring code?)
-- [ ] SetUp API data
+- [ ] SetUp DashboardPanelsandAPI.API data
 - [ ] Encapsulate Classes and add Getters and Setters
 
 ## Work Log

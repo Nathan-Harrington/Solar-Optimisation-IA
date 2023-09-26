@@ -1,7 +1,8 @@
+import DashboardPanelsandAPI.MetricPanel;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.*;
 
 public class RefreshPVButton extends JButton {
     public RefreshPVButton(String text){

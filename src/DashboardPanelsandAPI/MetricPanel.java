@@ -1,10 +1,11 @@
+package DashboardPanelsandAPI;
+
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class MetricPanel extends JPanel {
-    //OTHER METRICS SIMPLY NOT PROVIDED BY API PERHAPS PROVIDE ALTERNATE METRICS
-    //JLabel testRaw = new JLabel(API.GetRawReturn()); Test Returns entire response
+    //OTHER METRICS SIMPLY NOT PROVIDED BY DashboardPanels.API PERHAPS PROVIDE ALTERNATE METRICS
+    //JLabel testRaw = new JLabel(DashboardPanels.API.GetRawReturn()); Test Returns entire response
     static JLabel batteryLevel = new JLabel("Battery Percentage (%) : " + API.GetBatteryLevel() + "%");
     static JLabel energyProduced = new JLabel("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
 
