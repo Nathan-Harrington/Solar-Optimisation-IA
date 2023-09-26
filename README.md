@@ -5,9 +5,10 @@ A household solar optimisation project
 ...
 ## Road Map
 - [x] Initialise repo
-- [ ] First repo commit
+- [x] First repo commit
+- [ ] Configure Layout of Dashboard
 
 ## Work Log
-Date | Description | Version
------|-------------|--------|
-4.4.23| Initial commit| v0.1.0
+| Date    | Description    | Version |
+|---------|----------------|---------|
+| 25.9.23 | Initial commit | v0.1.0  |

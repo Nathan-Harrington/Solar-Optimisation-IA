@@ -8,10 +8,11 @@ public class MyFrame extends JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("Solar Optimisation Application");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLayout(new BorderLayout()); //Sets vertically aligned box layout
 
         //Sets Icon
         ImageIcon image = new ImageIcon("images/icon.png");
         this.setIconImage(image.getImage());
-        this.getContentPane().setBackground(new Color(0x212121)); // To Be Contrasted with ff4545 and 1e1c1c
+        this.getContentPane().setBackground(new Color(0x212121)); // Colour Palette faf3dd, c8d5b9, 8fc0A9, 68B0AB, 4a7c59
     }
 }
