@@ -1,16 +1,18 @@
+package DashboardPanelsandAPI;
+
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
 public class WeatherAPI {
     private static String ReturnString = "";
-    private static String[] ReturnArray = null; //CAN BE MODIFIED TO BE PRIVATE AND SET WITH SETTER METHOD
-    public WeatherAPI(){
+    private static String[] ReturnDates = null; //CAN BE MODIFIED TO BE PRIVATE AND SET WITH SETTER METHOD
+    public WeatherAPI(){ //Could make one API Class
 
     }
     public static void QueryAPI(){ //CODE TAKEN FROM https://www.youtube.com/watch?v=zZoboXqsCNw&t=336s <<RANDOM CODE>> Needs to be referenced or changed
         try {
-            URL url = new URL("");
+            URL url = new URL("https://open-meteo.com/en/docs#hourly=temperature_2m,cloudcover&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto"); //https://open-meteo.com/ to go to find a weather API
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -34,20 +36,10 @@ public class WeatherAPI {
                 scanner.close();
 
                 ReturnString = informationString.toString();
-
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        ReturnArray = ReturnString.split(",");
-    }
 
-
-    public static String GetBatteryLevel(){
-        return ReturnArray[11].substring(6, ReturnArray[11].length());
-    }
-
-    public static String GetEnergyProduced(){
-        return ReturnArray[5].substring(13, ReturnArray[5].length());
     }
 }

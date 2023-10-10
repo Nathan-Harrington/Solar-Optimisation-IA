@@ -8,18 +8,19 @@ public class MetricPanel extends JPanel {
     //JLabel testRaw = new JLabel(DashboardPanels.API.GetRawReturn()); Test Returns entire response
     static JLabel batteryLevel = new JLabel("Battery Percentage (%) : " + API.GetBatteryLevel() + "%");
     static JLabel energyProduced = new JLabel("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
+    static WeatherTable weatherTable = new WeatherTable();
 
     public MetricPanel(){
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         batteryLevel.setAlignmentX(Component.CENTER_ALIGNMENT);
         energyProduced.setAlignmentX(Component.CENTER_ALIGNMENT);
-
         //Adds Components
         //this.add(testRaw);
         this.add(Box.createRigidArea(new Dimension(0, 50))); //Spacer Components
         this.add(batteryLevel);
         this.add(Box.createRigidArea(new Dimension(0, 50)));
         this.add(energyProduced);
+        this.add(weatherTable);
     }
 
     public static void displayStatistics(){

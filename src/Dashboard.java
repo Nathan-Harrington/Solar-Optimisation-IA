@@ -12,6 +12,7 @@ public class Dashboard {
     public Dashboard() {
         //Instantiates Window
         API.QueryAPI();
+        //WeatherAPI.QueryAPI();
 
 
         //Instantiates Panels
@@ -34,6 +35,7 @@ public class Dashboard {
         toolBarPanel1.add(refreshPVMetrics, BorderLayout.CENTER);
         centerContainerPanel1.add(toolBarPanel1, BorderLayout.NORTH);
         centerContainerPanel1.add(metricPanel, BorderLayout.CENTER);
+
 
         //Adds Panel to Window
         dashboardwindow.add(headerPanel1, BorderLayout.NORTH); //Formatted to top
