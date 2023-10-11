@@ -5,14 +5,17 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class WeatherAPI {
-    private static String ReturnString = "";
-    private static String[] ReturnDates = null; //CAN BE MODIFIED TO BE PRIVATE AND SET WITH SETTER METHOD
+    private static String returnString = "";
+    private static String returnCloudCover = null; //CAN BE MODIFIED TO BE PRIVATE AND SET WITH SETTER METHOD
+    private static String[] cloudCoverArray = null;
+    private static Integer cloudCoverStart = 0;
+    private static Integer cloudCoverEnd = 0;
     public WeatherAPI(){ //Could make one API Class
 
     }
     public static void QueryAPI(){ //CODE TAKEN FROM https://www.youtube.com/watch?v=zZoboXqsCNw&t=336s <<RANDOM CODE>> Needs to be referenced or changed
         try {
-            URL url = new URL("https://open-meteo.com/en/docs#hourly=temperature_2m,cloudcover&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto"); //https://open-meteo.com/ to go to find a weather API
+            URL url = new URL("https://api.open-meteo.com/v1/forecast?latitude=-35.42&longitude=149.24&hourly=cloudcover&timezone=auto"); //https://open-meteo.com/ to go to find a weather API
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -35,12 +38,20 @@ public class WeatherAPI {
                 //Close the scanner
                 scanner.close();
 
-                ReturnString = informationString.toString();
-                System.out.print(ReturnString);
+                returnString = informationString.toString();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        //Sanitising Output
+        cloudCoverStart = returnString.lastIndexOf("cloudcover") + 13;
+        cloudCoverEnd = returnString.length() - 3;
+        returnCloudCover = returnString.substring(cloudCoverStart, cloudCoverEnd);
+        cloudCoverArray = returnCloudCover.split(",");
+    }
+
+    public static String[] getCloudCoverArray() {
+        return cloudCoverArray;
     }
 }
