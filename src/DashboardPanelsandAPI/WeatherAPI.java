@@ -36,6 +36,7 @@ public class WeatherAPI {
                 scanner.close();
 
                 ReturnString = informationString.toString();
+                System.out.print(ReturnString);
             }
         } catch (Exception e) {
             e.printStackTrace();

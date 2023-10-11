@@ -12,7 +12,7 @@ public class Dashboard {
     public Dashboard() {
         //Instantiates Window
         API.QueryAPI();
-        //WeatherAPI.QueryAPI();
+        WeatherAPI.QueryAPI();
 
 
         //Instantiates Panels
