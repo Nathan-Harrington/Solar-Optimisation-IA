@@ -8,7 +8,7 @@ public class ApplianceSettings extends JInternalFrame {
         this.setClosable(true);
         this.setMaximizable(true);
         displaySettings(this);
-        
+
 
     }
     public void displaySettings(ApplianceSettings appliance){
