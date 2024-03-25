@@ -19,9 +19,12 @@ public class ApplianceButton extends JButton{
 
         //
     }
-    public void displayAppliancePanel(){
-        JInternalFrame appliancePanel = new JInternalFrame(("Appliance Selector"), true, true, true);
+    public void displayAppliancePanel(){  //https://www.youtube.com/watch?v=bvPOZgkhwEk
+        JInternalFrame appliancePanel = new JInternalFrame(("Appliance Selector"), true, true, true); //defines panel
         JButton exit = new JButton("Close Window");
+        JButton dishwasherButton = new JButton("Dishwasher Settings");
+        JButton washingButton = new JButton("Washing Machine Settings");
+        JButton airconButton = new JButton("Air Conditioning Settings");
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -29,10 +32,15 @@ public class ApplianceButton extends JButton{
             }
         });
         JPanel t = new JPanel();
-        appliancePanel.add(t, BorderLayout.NORTH);
+        JPanel center = new JPanel(new GridLayout(3,1,0,10));
+        center.add(dishwasherButton);
+        center.add(washingButton);
+        center.add(airconButton);
+        t.add(exit);
+        appliancePanel.add(center, BorderLayout.CENTER);
+        appliancePanel.add(t, BorderLayout.SOUTH);
         appliancePanel.setVisible(true);
-        appliancePanel.setSize(200,200);
         Scheduler.centerContainerPanel.add(appliancePanel);
-        appliancePanel.moveToFront();
+        appliancePanel.moveToFront(); // if trying to figure out resizing it is probably because of layout schema maybe a solution here https://stackoverflow.com/questions/19469178/auto-resizing-internal-frame-when-main-frame-maximizes-in-netbeans
     }
 }
