@@ -39,7 +39,7 @@ public class Dashboard {
 
         //Adds Panel to Window
         dashboardwindow.add(headerPanel1, BorderLayout.NORTH); //Formatted to top
-        dashboardwindow.add(centerContainerPanel1);
+        dashboardwindow.add(centerContainerPanel1, BorderLayout.CENTER);
         dashboardwindow.add(decorativePanel1, BorderLayout.WEST);
         dashboardwindow.add(decorativePanel2, BorderLayout.EAST);
         dashboardwindow.add(decorativePanel3, BorderLayout.SOUTH);
