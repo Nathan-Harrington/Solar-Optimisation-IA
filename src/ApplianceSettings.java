@@ -92,7 +92,7 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
         }
     }
     public void saveBoolstoDb(String[] names, JToggleButton[] days, String applianceType){ //NEEDS TO BE REPEATED AND GENERALISED
-        for(int i = 0; i < 7; i++) {
+        for(int i = 0; i < 2; i++) { //Check i < 7 when adding rest of the days
             String daystring = String.format("appliance_%s", names[i]);
             boolean newValue = days[i].isSelected();
             System.out.println(applianceType);
