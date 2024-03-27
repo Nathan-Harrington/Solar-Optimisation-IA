@@ -8,8 +8,6 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
     JTextField numberOfTimes = new JTextField("Enter number of times needed to run appliance"); //NEED TO SANITISE INPUT?
     JButton numTimesButton = new JButton("Submit");
     JLabel tempTimesDisplay = new JLabel(" ");
-    DbFunctions db = new DbFunctions();
-    Connection conn = db.connect_to_db("solardb", "postgres", "solar");
     //JToggleButton
     public ApplianceSettings(String name){
         //CONSTRUCT POPUP
@@ -33,9 +31,11 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
         appliance.setVisible(true);
     }
     public void storeToDB(String name){
-            tempTimesDisplay.setText(numberOfTimes.getText());
+            DbFunctions db = new DbFunctions();
+            Connection conn = db.connect_to_db("solardb", "postgres", "solar");
             int temp = Integer.valueOf(numberOfTimes.getText());
+            tempTimesDisplay.setText(numberOfTimes.getText());
             numberOfTimes.setText("  ");
-            DbFunctions.update_appliance_cycles_num(conn, "appliances", name, temp); //NEED TO FIX
+            db.update_appliance_cycles_num(conn, "appliances", name, temp); //NEED TO FIX
     }
 }

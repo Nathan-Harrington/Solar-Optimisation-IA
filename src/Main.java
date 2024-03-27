@@ -9,6 +9,7 @@ public class Main {
         Connection conn = db.connect_to_db("solardb", "postgres", "solar");
         //db.createTable(conn, "SeasonalModelHourly");
         System.out.println("run");
+        db.update_appliance_cycles_num(conn, "appliances", "Dishwasher", 7);
     }
     public static void SchedulerOff(){
         Dashboard.dashboardwindow.setVisible(false);
