@@ -7,8 +7,6 @@
     <list default="true" id="420dab9b-564b-4cc0-8b86-3fb8609c4d11" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ApplianceSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplianceSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DbFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DbFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +105,7 @@
       <workItem from="1711277024486" duration="1212000" />
       <workItem from="1711278575838" duration="148000" />
       <workItem from="1711343390291" duration="18832000" />
-      <workItem from="1711525414777" duration="9340000" />
+      <workItem from="1711525414777" duration="9842000" />
     </task>
     <servers />
   </component>

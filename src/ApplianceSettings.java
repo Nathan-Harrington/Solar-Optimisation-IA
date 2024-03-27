@@ -40,7 +40,7 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
         numTimesPanel.add(numTimesButton);
 
 
-        //BOOLEAN VARIABLES
+        //BOOLEAN VARIABLES COULD TURN INTO A FUNCTION?
         boolean boolMonday = db.return_bool_day(conn, "appliances", "monday", name);
         Monday.setSelected(boolMonday);
         if(Monday.isSelected()){ //Check on Button Click
@@ -58,13 +58,16 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
         else{
             Tuesday.setText("Don't Run on Tuesday");
         }
+
+        String[] weekNames = {"monday", "tuesday"};
         //INPUT BUTTON
         numTimesButton.addActionListener(e -> storeToDB(name));
         Monday.addActionListener(e -> updateBoolText(Monday));
         Tuesday.addActionListener(e -> updateBoolText(Tuesday));
-        saveBool.addActionListener(e -> saveBoolstoDb("monday", Monday, name)); //NEeDS TO BE LOOPED AND GENERALISED
+        saveBool.addActionListener(e -> saveBoolstoDb(weekNames, buttons, name)); //NEeDS TO BE LOOPED AND GENERALISED
         //BOOLEAN COMPONENTS
         boolPanel.add(Monday);
+        boolPanel.add(Tuesday);
         saveBoolPanel.add(saveBool);
         //ADD FINAL PANELS
         basePanel.add(saveBoolPanel);
@@ -88,16 +91,17 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
             day.setText("Don't Run on Monday");
         }
     }
-    public void saveBoolstoDb(String name, JToggleButton day, String applianceType){ //NEEDS TO BE REPEATED AND GENERALISED
-        String daystring = String.format("appliance_%s", name);
-        boolean newValue = day.isSelected();
-        System.out.println(applianceType);
-        System.out.println(day.isSelected());
-        if(day.isSelected()){ //Check on Button Click
-            db.update_column_bool(conn, "appliances", daystring, newValue, applianceType);
-        }
-        else{
-            db.update_column_bool(conn, "appliances", daystring, newValue, applianceType);
+    public void saveBoolstoDb(String[] names, JToggleButton[] days, String applianceType){ //NEEDS TO BE REPEATED AND GENERALISED
+        for(int i = 0; i < 7; i++) {
+            String daystring = String.format("appliance_%s", names[i]);
+            boolean newValue = days[i].isSelected();
+            System.out.println(applianceType);
+            System.out.println(days[i].isSelected());
+            if (days[i].isSelected()) { //Check on Button Click
+                db.update_column_bool(conn, "appliances", daystring, newValue, applianceType);
+            } else {
+                db.update_column_bool(conn, "appliances", daystring, newValue, applianceType);
+            }
         }
     }
 }
