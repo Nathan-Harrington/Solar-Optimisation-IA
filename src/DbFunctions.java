@@ -65,34 +65,47 @@ public class DbFunctions {
         }
     }
 //COULD GENERALISE WITH MORE ARGUMENTS TO A GENERAL UPDATE
-    public static void update_appliance_cycles_num(Connection conn, String table_name, String appliance_name, int new_value){
+    public static void update_column_int(Connection conn, String table_name, String appliance_name, int new_value, String column_name){
         Statement statement;
         try{
-            String query = String.format("update %s set appliance_cycles_num = %s where appliance_name = '%s'", table_name, new_value, appliance_name); //name can be changed to id for example
+            String query = String.format("update %s set %s = %s where appliance_name = '%s'", table_name, column_name,new_value, appliance_name); //name can be changed to id for example
             statement = conn.createStatement();
             statement.executeUpdate(query);
-            System.out.println("Data Updated");
+            System.out.println("Data Updated Type: (Int)");
         }
         catch(Exception e){
             System.out.println(e);
         }
     }
-    public void search_by_name(Connection conn, String table_name, String name){
+    public static void update_column_bool(Connection conn, String table_name, String column_name, boolean new_value, String appliance_name){
         Statement statement;
-        ResultSet rs = null;
         try{
-            String query = String.format("select * from %s where name = '%s'", table_name, name);
+            String query = String.format("update %s set %s = %s where appliance_name = '%s'", table_name, column_name, new_value, appliance_name);
             statement = conn.createStatement();
-            rs = statement.executeQuery(query);
-            while(rs.next()){
-                System.out.print(rs.getString("empid"));
-                System.out.print(rs.getString("name"));
-                System.out.println(rs.getString("address"));
-            }
+            statement.executeUpdate(query);
+            System.out.println("Data Updated Type: (Bool)");
         }
         catch(Exception e){
             System.out.println(e);
         }
+    }
+    public boolean return_bool_day(Connection conn, String table_name, String day, String appliance_name){
+        Statement statement;
+        ResultSet rs = null;
+        boolean returnBool = true;
+        try{
+            String query = String.format("select appliance_%s from %s where appliance_name = '%s'", day, table_name, appliance_name);
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+            while(rs.next()){ //.next() required to read from database otherwise rs set not positioned correctly!
+                returnBool = rs.getBoolean(String.format("appliance_%s", day));
+            }
+            System.out.println(returnBool);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return returnBool;
     }
 
     public  void delete_row_by_name(Connection conn, String table_name, String name){
