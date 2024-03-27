@@ -64,11 +64,11 @@ public class DbFunctions {
             System.out.println(e);
         }
     }
-
-    public void update_name(Connection conn, String table_name,String old_name, String new_name){
+//COULD GENERALISE WITH MORE ARGUMENTS TO A GENERAL UPDATE
+    public static void update_appliance_cycles_num(Connection conn, String table_name, String appliance_name, int new_value){
         Statement statement;
         try{
-            String query = String.format("update %s set name = '%s' where name = '%s'", table_name, new_name, old_name); //name can be changed to id for example
+            String query = String.format("update %s set appliance_cycles_num = %s where appliance_name = '%s'", table_name, new_value, appliance_name); //name can be changed to id for example
             statement = conn.createStatement();
             statement.executeUpdate(query);
             System.out.println("Data Updated");

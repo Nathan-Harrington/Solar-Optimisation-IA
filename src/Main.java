@@ -7,7 +7,7 @@ public class Main {
         Dashboard dashboard = new Dashboard();
         DbFunctions db = new DbFunctions();
         Connection conn = db.connect_to_db("solardb", "postgres", "solar");
-        db.createTable(conn, "SeasonalModelHourly");
+        //db.createTable(conn, "SeasonalModelHourly");
         System.out.println("run");
     }
     public static void SchedulerOff(){
