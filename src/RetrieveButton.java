@@ -5,7 +5,7 @@ import java.awt.*;
 public class RetrieveButton extends JButton{
     public RetrieveButton(String text){
         this.setPreferredSize(new Dimension(200,75));
-        //this.addActionListener(e -> System.out.println("input 1 received"));
+        this.addActionListener(e -> System.out.println("schedule input received"));
         this.setText(text);
 
         //Styling

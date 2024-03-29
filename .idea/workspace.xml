@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="420dab9b-564b-4cc0-8b86-3fb8609c4d11" name="Changes" comment="" />
+    <list default="true" id="420dab9b-564b-4cc0-8b86-3fb8609c4d11" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/DbFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/MetricPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/MetricPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/WeatherAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/WeatherAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RetrieveButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RetrieveButton.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,6 +59,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="DashboardPanelsandAPI" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -102,7 +113,8 @@
       <workItem from="1711277024486" duration="1212000" />
       <workItem from="1711278575838" duration="148000" />
       <workItem from="1711343390291" duration="18832000" />
-      <workItem from="1711525414777" duration="10254000" />
+      <workItem from="1711525414777" duration="11032000" />
+      <workItem from="1711669182109" duration="13597000" />
     </task>
     <servers />
   </component>

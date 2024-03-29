@@ -2,8 +2,18 @@ package DashboardPanelsandAPI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MetricPanel extends JPanel {
+    public static LocalDateTime now = LocalDateTime.now(); //import Time
+    public static DayOfWeek dayofWeek = DayOfWeek.from(now);
+    public static int dayNum = dayofWeek.getValue();
+    public static String currentday = dayofWeek.name();
     //OTHER METRICS SIMPLY NOT PROVIDED BY DashboardPanels.API PERHAPS PROVIDE ALTERNATE METRICS
     //JLabel testRaw = new JLabel(DashboardPanels.API.GetRawReturn()); Test Returns entire response
     static String[] cloudCoverArray = WeatherAPI.getCloudCoverArray();
@@ -36,7 +46,8 @@ public class MetricPanel extends JPanel {
     static JLabel batteryLevel = new JLabel("Battery Percentage (%) : " + API.GetBatteryLevel() + "%");
     static JLabel energyProduced = new JLabel("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
     static JTable weatherTable = new JTable(WeatherData, WeatherTable.columnNames);
-
+    static DbFunctions db = new DbFunctions();
+    static Connection conn = db.connect_to_db("solardb", "postgres", "solar");
     public MetricPanel(){
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         batteryLevel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -48,10 +59,20 @@ public class MetricPanel extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0, 50)));
         this.add(energyProduced);
         this.add(Box.createRigidArea(new Dimension(0, 50)));
-        this.add(new JScrollPane(weatherTable));
-        WeatherData = setWeatherData(WeatherData);
-    }
 
+        this.add(new JScrollPane(weatherTable));
+        cloudCoverArray = setCloudCoverArray(cloudCoverArray);
+        WeatherData = setWeatherData(WeatherData); //Sets Table
+        //TESTING
+        System.out.println(dayNum);
+        System.out.println(dayofWeek);
+        //System.out.println(WeatherData[0][0]); //[x][y], [x] = row & [y] = column
+        //System.out.println(WeatherData[0][1]);
+        //System.out.println(WeatherData[1][0]);
+        //SETS Database Values
+        updateWeatherDb(cloudCoverArray);
+    }
+    //Displays PV METRICS
     public static void displayStatistics(){
         API.QueryAPI();
         batteryLevel.setText("Battery Percentage (%) : " + API.GetBatteryLevel() + "%");
@@ -60,14 +81,47 @@ public class MetricPanel extends JPanel {
         energyProduced.setText("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
         System.out.println("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
     }
-    public Object[][] setWeatherData(Object[][] sampleData) {
-        int count = 0;
-        for(int i = 1; i < 24; i ++){
-            for(int j = 1; j < 8; j++){
-                count = count + 1;
-                sampleData[i][j] = cloudCoverArray[count];
+    public String[] setCloudCoverArray(String[] array) {
+        int startIndex = 0;
+        int endIndex = 0;
+        //Displays Table by Assigning values from Array
+        if (dayNum != 1) {
+            startIndex = ((8 - dayNum)*24);
+            endIndex = startIndex + 168;
+        }
+        String[] slice = new String[endIndex - startIndex];
+        for(int i = 0; i < slice.length; i ++){
+            slice[i] = cloudCoverArray[startIndex + i];
+        }
+        return slice;
+    }
+        public Object[][] setWeatherData(Object[][] sampleData) {
+            int count = 0;
+        for(int i = 1; i < 8; i ++){ //want to assign first element to [0] [1], second element to [0] [2]... [0][8] then [1][1]
+            for(int j = 0; j < 24; j++){ //loops through hours of j first before moving to i
+                sampleData[j][i] = cloudCoverArray[count];
+                count = count + 1; //count needs to increment after accessing value
             }
         }
         return sampleData;
+    }
+    //Updates Cloud Coverage Value for each Given Day to the Database
+    public static void updateWeatherDb(String [] data){
+        String[] days = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}; //Not Really Monday, Not Really Tuesday so forth!!!
+        List<Integer> averages = new ArrayList<Integer>();
+        int count = 0;
+        for(int i = 0; i < 7; i++){
+            int total = 0; //reset total after each group of 24
+            for(int j = 0; j < 24; j++){
+                total = Integer.parseInt(data[count]) + total; //sums up
+                count += 1;
+                //System.out.println(total); check total function
+            }
+            averages.add(i, (total/24)); //goes after for loop and adds element to position in list
+            //System.out.println(Arrays.toString(averages.toArray()));
+        }
+        for(int i = 0; i < averages.size(); i++){
+            db.update_column_int(conn, "weather", days[i], averages.get(i),"average_cloud_coverage" );
+        }
     }
 }
