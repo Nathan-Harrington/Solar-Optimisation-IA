@@ -145,6 +145,26 @@ public class DbFunctions {
         }
         return returnInt;
     }
+    public float[] return_seasonal_production(Connection conn, String column_name){
+        Statement statement;
+        ResultSet rs = null;
+        int count = 0;
+        float[] returnInt = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        try{
+            String query = String.format("select %s from seasonal_models", column_name);
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+            while(rs.next()){ //.next() required to read from database otherwise rs set not positioned correctly!
+                returnInt[count] = rs.getInt(column_name);
+                count += 1;
+            }
+            System.out.println(returnInt);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return returnInt;
+    }
     public  void delete_row_by_name(Connection conn, String table_name, String name){
         Statement statement;
         try{

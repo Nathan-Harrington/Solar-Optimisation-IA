@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 public class ScheduleData{
     public static LocalDate now = LocalDate.now(); //import Time
@@ -33,7 +34,7 @@ public class ScheduleData{
             {"22:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
             {"23:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"}
     };
-    public void updateSchedule(){
+    public void retrieveVariables(){
         //Retrieve Values from Database
         int DishwasherCycles = db.return_appliances_num(conn, "appliance_cycles_num","Dishwasher");
         int AirconCycles = db.return_appliances_num(conn, "appliance_cycles_num", "Airconditioning");
@@ -48,22 +49,76 @@ public class ScheduleData{
         int AirconConsumption = db.return_appliances_num(conn, "device_consumption", "Airconditioning");
         int WashingMachineConsumption = db.return_appliances_num(conn, "device_consumption", "Washing Machine");
         scheduleAircon(AirconCycles, AirconDays, AirconMaxQuota, AirconConsumption);
-
     }
     //FIRST INSTANCE OF SCHEDULING
-    public void scheduleAircon(int Cycles, Boolean[] days, int MaxperDay, int Production){
+    public void scheduleAircon(int Cycles, Boolean[] days, int MaxperDay, int Consumption){ //MYSTERY ERROR BUT WORKS?
         //RETRIEVE WEATHER AND DEFINE PRODUCTION
         int[] weather = db.return_weather(conn);
-        int[] productionArray = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+        float[][] productionArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
         //CHECK FIRST IF THE CLIENT HAS SET THE DAY TO HAVE APPLIANCES RUN ON
-        for(int i = 0; i < days.length; i++){
+        for(int i = 0; i < 7; i++){
             if(days[i]){ //if true essentially as days is an array of booleans
                 //CHECK IF IT IS SUMMER
-                if(month == "December" || month == "January" || month = "February"){
-
+                if(month == "December" || month == "January" || month == "February"){
+                    //Check Cloudiness
+                    if(weather[i] < 42){
+                        //ASSIGN PRODUCTION TO DAY
+                            productionArray[i] = db.return_seasonal_production(conn, "summer_low_cloud");
+                    }
+                    else if(weather[i] < 72){
+                            productionArray[i] = db.return_seasonal_production(conn, "summer_medium_cloud");
+                    }
+                    else{
+                            productionArray[i] = db.return_seasonal_production(conn, "summer_high_cloud");
+                    }
+                }
+                //AUTUMN
+                if(month == "March" || month == "April" || month == "May"){
+                    //Check Cloudiness
+                    if(weather[i] < 29){
+                        //ASSIGN PRODUCTION TO DAY
+                        productionArray[i] = db.return_seasonal_production(conn, "autumn_low_cloud");
+                    }
+                    else{
+                        productionArray[i] = db.return_seasonal_production(conn, "autumn_high_cloud");
+                    }
+                }
+                //AUTUMN
+                if(month == "June" || month == "July" || month == "August"){
+                    //ASSIGN PRODUCTION TO DAY
+                    productionArray[i] = db.return_seasonal_production(conn, "winter");
+                }
+                //SPRING
+                if(month == "September" || month == "October" || month == "November"){
+                    if(weather[i] < 42){
+                        //ASSIGN PRODUCTION TO DAY
+                        productionArray[i] = db.return_seasonal_production(conn, "spring_low_cloud");
+                    }
+                    else if(weather[i] < 80){
+                        productionArray[i] = db.return_seasonal_production(conn, "spring_medium_cloud");
+                    }
+                    else{
+                        productionArray[i] = db.return_seasonal_production(conn, "spring_high_cloud");
+                    }
                 }
             }
         }
+        for(int i = 0; i < 7; i++){
+            int count = 0;
+            for(int j = 6; j < 20; j++){
+                if(productionArray[i][j] > Consumption && count < MaxperDay){
+                    data[j][i+1] = "Airconditioner";
+                    System.out.println(Arrays.deepToString(data));
+                }
+            }
+        }
+        Scheduler.setTable();
     }
 
 }

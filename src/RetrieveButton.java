@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.sql.Connection;
+import java.util.Arrays;
 
 public class RetrieveButton extends JButton{
 
@@ -18,7 +19,10 @@ public class RetrieveButton extends JButton{
     }
     public static void displaySchedule(){
         ScheduleData sdfunctions = new ScheduleData();
-        sdfunctions.updateSchedule();
+        sdfunctions.retrieveVariables();
+        //ScheduleData.data[0][1] = "test";
+        //System.out.println(Arrays.deepToString(ScheduleData.data));
+        //Scheduler.setTable();
     }
 }
 
