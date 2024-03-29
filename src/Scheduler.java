@@ -10,7 +10,8 @@ public class Scheduler {
     static JPanel schedulerwindow = new JPanel(new BorderLayout());
     static ApplianceButton appliancebutton = new ApplianceButton("Modify Appliances");
     static JPanel centerContainerPanel = new JPanel(); //Border Layout seems to force component to take up entire panel
-
+    static JTable scheduleTable = new JTable(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
+    static JScrollPane tableContainerPanel = new JScrollPane(scheduleTable);
     public Scheduler(){
         //Instantiates Panels
         HeaderPanel headerPanel1 = new HeaderPanel();
@@ -28,10 +29,11 @@ public class Scheduler {
         headerPanel1.add(header1);
         buttonContainerPanel.add(appliancebutton);
         buttonContainerPanel.add(retrievebutton);
-
+        
         //Add button panel to central panel
-        centerContainerPanel.add(buttonContainerPanel, BorderLayout.NORTH);
-
+        centerContainerPanel.add(buttonContainerPanel);
+        //Add table panel to central panel
+        centerContainerPanel.add(tableContainerPanel);
 
         //Adds Components to Window
         schedulerwindow.add(headerPanel1, BorderLayout.NORTH);

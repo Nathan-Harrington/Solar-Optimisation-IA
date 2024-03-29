@@ -15,7 +15,7 @@ public class RetrieveButton extends JButton{
         this.setBorder(border);
     }
     public static void displaySchedule(){
-        
+
     }
 }
 
