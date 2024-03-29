@@ -29,7 +29,7 @@ public class Scheduler {
         headerPanel1.add(header1);
         buttonContainerPanel.add(appliancebutton);
         buttonContainerPanel.add(retrievebutton);
-        
+
         //Add button panel to central panel
         centerContainerPanel.add(buttonContainerPanel);
         //Add table panel to central panel

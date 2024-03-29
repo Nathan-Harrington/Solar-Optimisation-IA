@@ -107,7 +107,44 @@ public class DbFunctions {
         }
         return returnBool;
     }
-
+    public int return_appliances_num(Connection conn, String column_name, String appliance_name){
+        Statement statement;
+        ResultSet rs = null;
+        int returnInt = 0;
+        try{
+            String query = String.format("select %s from appliances where appliance_name = '%s'", column_name, appliance_name);
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+            while(rs.next()){ //.next() required to read from database otherwise rs set not positioned correctly!
+                returnInt = rs.getInt(column_name);
+            }
+            System.out.println(returnInt);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return returnInt;
+    }
+    public int[] return_weather(Connection conn){
+        Statement statement;
+        ResultSet rs = null;
+        int count = 0;
+        int[] returnInt = {0,0,0,0,0,0,0};
+        try{
+            String query = String.format("select average_cloud_coverage from weather");
+            statement = conn.createStatement();
+            rs = statement.executeQuery(query);
+            while(rs.next()){ //.next() required to read from database otherwise rs set not positioned correctly!
+                returnInt[count] = rs.getInt("average_cloud_coverage");
+                count += 1;
+            }
+            System.out.println(returnInt);
+        }
+        catch(Exception e){
+            System.out.println(e);
+        }
+        return returnInt;
+    }
     public  void delete_row_by_name(Connection conn, String table_name, String name){
         Statement statement;
         try{

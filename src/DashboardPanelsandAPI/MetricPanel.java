@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.Connection;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,7 +82,7 @@ public class MetricPanel extends JPanel {
         energyProduced.setText("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
         System.out.println("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
     }
-    public String[] setCloudCoverArray(String[] array) { //GRAPH LINES UP!!! MONDAY = MONDAY etc...
+    public String[] setCloudCoverArray(String[] array) { //GRAPH NOW LINE UP!!! MONDAY = MONDAY etc...
         int startIndex = 0;
         int endIndex = 0;
         //Displays Table by Assigning values from Array

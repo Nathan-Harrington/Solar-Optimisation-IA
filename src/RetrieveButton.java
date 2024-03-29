@@ -1,8 +1,10 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.sql.Connection;
 
 public class RetrieveButton extends JButton{
+
     public RetrieveButton(String text){
         this.setPreferredSize(new Dimension(200,75));
         this.addActionListener(e -> System.out.println("schedule input received"));
@@ -15,7 +17,8 @@ public class RetrieveButton extends JButton{
         this.setBorder(border);
     }
     public static void displaySchedule(){
-
+        ScheduleData sdfunctions = new ScheduleData();
+        sdfunctions.updateSchedule();
     }
 }
 
