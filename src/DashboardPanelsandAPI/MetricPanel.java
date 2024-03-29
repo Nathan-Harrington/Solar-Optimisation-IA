@@ -81,7 +81,7 @@ public class MetricPanel extends JPanel {
         energyProduced.setText("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
         System.out.println("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
     }
-    public String[] setCloudCoverArray(String[] array) {
+    public String[] setCloudCoverArray(String[] array) { //GRAPH LINES UP!!! MONDAY = MONDAY etc...
         int startIndex = 0;
         int endIndex = 0;
         //Displays Table by Assigning values from Array
