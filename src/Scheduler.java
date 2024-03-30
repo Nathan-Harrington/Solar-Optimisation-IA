@@ -19,6 +19,35 @@ public class Scheduler {
         //tableContainerPanel.add(scheduleTable);
         //centerContainerPanel.add(tableContainerPanel);
     }
+    public static void resetTable(){
+        ScheduleData.data = new Object[][]{{"0:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"1:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"2:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"3:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"4:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"5:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"6:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"7:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"8:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"9:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"10:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"11:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"12:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"13:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"14:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"15:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"16:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"17:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"18:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"19:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"20:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"21:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"22:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
+                {"23:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"}
+        };
+        DefaultTableModel scheduleModel = new DefaultTableModel(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
+        scheduleTable.setModel(scheduleModel);
+    }
     //public static void resetTable(){
         //scheduleTable.repaint();
         //for(int i = 0; i < ScheduleData.data.length; i++){
