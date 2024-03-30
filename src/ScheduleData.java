@@ -53,6 +53,7 @@ public class ScheduleData{
     }
     //FIRST INSTANCE OF SCHEDULING
     public void scheduleAircon(int Cycles, Boolean[] days, int MaxperDay, int Consumption){ //MYSTERY ERROR BUT WORKS?
+        //COLLECTIVE BATTERY AND PRODUCTION WHICH ALL APPLIANCES ACCESS AND MODIFY BOOLEAN ON A CASE BY CASE BASIS LATER
         //RETRIEVE WEATHER AND DEFINE PRODUCTION
         int[] weather = db.return_weather(conn);
         float[][] productionArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -64,7 +65,7 @@ public class ScheduleData{
                 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
         //CHECK FIRST IF THE CLIENT HAS SET THE DAY TO HAVE APPLIANCES RUN ON
         for(int i = 0; i < 7; i++){
-            if(days[i]){ //if true essentially as days is an array of booleans
+            if(days[i]){ //if true essentially as days is an array of booleans NEEDS TO CHANGE
                 //CHECK IF IT IS SUMMER
                 if(month == "December" || month == "January" || month == "February"){
                     System.out.println("Summer");
@@ -228,9 +229,14 @@ public class ScheduleData{
                 batteryWh = batteryWh + productionArray[i][j];
                 //System.out.println(productionArray[i][j]);
                 //System.out.println(Consumption);
-                if( (data[j][i+1] != "Airconditioner") && productionArray[i][j] > Consumption && count < MaxperDay  && totalCount < Cycles){
+                if(data[j][i+1].equals("Airconditioner") && AirconConsumption < productionArray[i][j]){
+                    batteryWh= batteryWh - AirconConsumption;
+                }
+                if(data[j][i+1].equals("Airconditioner") && AirconConsumption > productionArray[i][j]){
+                    productionArray[i][j] = productionArray[i][j] - AirconConsumption;
+                }
+                if( (data[j][i+1] != "Airconditioner") && productionArray[i][j] > Consumption && count < MaxperDay  && totalCount < Cycles && (data[])){
                     data[j][i+1] = "Dishwasher";
-                    //System.out.println(data);
                     count += 1;
                     totalCount += 1;
                     //System.out.println(Arrays.deepToString(data));
