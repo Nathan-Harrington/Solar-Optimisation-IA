@@ -1,6 +1,7 @@
 import DashboardPanelsandAPI.*;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.Arrays;
@@ -53,7 +54,7 @@ public class Scheduler {
     static RetrieveButton retrievebutton = new RetrieveButton("Get Schedule");
     static JButton ScheduletoDashboard = new JButton("Return to Dashboard");
     static JPanel buttonContainerPanel = new JPanel(new FlowLayout());
-
+    
     public Scheduler(){
         //Instantiates Panels
         HeaderPanel headerPanel1 = new HeaderPanel();
@@ -69,6 +70,12 @@ public class Scheduler {
 
         //Back to Dashboard
         ScheduletoDashboard.addActionListener(e -> displayDashboard());
+        ScheduletoDashboard.setPreferredSize(new Dimension(200,75));
+        //Styling
+        ScheduletoDashboard.setBackground(new Color(0x8FC089));
+        ScheduletoDashboard.setForeground(new Color(0xFAF3DD));
+        Border border = BorderFactory.createLineBorder(new Color(0x68b0ab), 3);
+        ScheduletoDashboard.setBorder(border);
 
         //Adds Components to Panels
         headerPanel1.add(header1);
