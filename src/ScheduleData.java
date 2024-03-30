@@ -235,7 +235,7 @@ public class ScheduleData{
                 if(data[j][i+1].equals("Airconditioner") && AirconConsumption > productionArray[i][j]){
                     productionArray[i][j] = productionArray[i][j] - AirconConsumption;
                 }
-                if( (data[j][i+1] != "Airconditioner") && productionArray[i][j] > Consumption && count < MaxperDay  && totalCount < Cycles && (data[])){
+                if( (data[j][i+1] != "Airconditioner") && productionArray[i][j] > Consumption && count < MaxperDay  && totalCount < Cycles){
                     data[j][i+1] = "Dishwasher";
                     count += 1;
                     totalCount += 1;
