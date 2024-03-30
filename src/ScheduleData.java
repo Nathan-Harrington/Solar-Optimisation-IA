@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ScheduleData{
 
-    float[][] productionArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    float[][] productionArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, //EACH VALUE DEMARCATES HOW MUCH UNASSIGNED IS PRODUCED
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -116,13 +116,19 @@ public class ScheduleData{
         scheduleAircon(AirconCycles, AirconDays, AirconMaxQuota, AirconConsumption);
     }
     //FIRST INSTANCE OF SCHEDULING
+    static float[][] batteryWh = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, //EACH VALUE DEMARCATES AVAILABLE POWER IN THAT HOUR SLOT
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
     public void scheduleAircon(int Cycles, Boolean[] days, int MaxperDay, int Consumption){ //MYSTERY ERROR BUT WORKS?
         //System.out.println("NEXT TASK");
         //System.out.println(Arrays.deepToString(data));
         int totalCount = 0;
         for(int i = 0; i < 7; i++){
             int count = 0;
-            float batteryWh = 0;
             for(int j = 6; j < 20; j++){
                 //System.out.println(batteryWh);
 
@@ -132,19 +138,25 @@ public class ScheduleData{
                     count += 1;
                     totalCount += 1;
                     data[j][i+1] = "Airconditioner";
+                    batteryWh[i][j + 1] = batteryWh[i][j] + productionArray[i][j] - Consumption;
+                    productionArray[i][j] = productionArray[i][j] - Consumption;
                     //System.out.println(Arrays.deepToString(data));
                 }
-                else if ((batteryWh > Consumption) && (count < MaxperDay) && (totalCount < Cycles) && days[i]) {
+
+                else if ((batteryWh[i][j] > Consumption) && (count < MaxperDay) && (totalCount < Cycles) && days[i]) {
                     count += 1;
                     totalCount += 1;
                     data[j][i + 1] = "Airconditioner";
-                    batteryWh = batteryWh - Consumption;
-
-                }else{
-                    batteryWh = batteryWh + productionArray[i][j];
+                    batteryWh[i][j + 1] = batteryWh[i][j] - Consumption + productionArray[i][j];
                 }
+
+                else{
+                    batteryWh[i][j + 1] = batteryWh[i][j] + productionArray[i][j];
+                }
+
             }
         }
+        System.out.println(Arrays.deepToString(batteryWh));
         scheduleDishwasher(DishwasherCycles, DishwasherDays, DishwasherMaxQuota, DishwasherConsumption);
         Scheduler.setTable();
     }
@@ -152,35 +164,33 @@ public class ScheduleData{
         int totalCount = 0;
         for(int i = 0; i < 7; i++){
             int count = 0;
-            float batteryWh = 0;
             for(int j = 6; j < 20; j++){
                 //System.out.println(batteryWh);
                 //System.out.println(productionArray[i][j]);
                 //System.out.println(Consumption);
-                if(data[j][i+1].equals("Airconditioner") && AirconConsumption < productionArray[i][j]){
-                    batteryWh= batteryWh - AirconConsumption;
-                }
-                if(data[j][i+1].equals("Airconditioner") && AirconConsumption > productionArray[i][j]){
-                    productionArray[i][j] = productionArray[i][j] - AirconConsumption;
-                }
                 if((data[j][i+1] != "Airconditioner") && productionArray[i][j] > Consumption && count < MaxperDay  && totalCount < Cycles && days[i]){
                     data[j][i+1] = "Dishwasher";
                     count += 1;
                     totalCount += 1;
+                    batteryWh[i][j + 1] = batteryWh[i][j] + productionArray[i][j] - Consumption; // + productionArray[i][j]is added as it the available power needs to be rolled over
+                    productionArray[i][j] = productionArray[i][j] - Consumption;
                     //System.out.println(Arrays.deepToString(data));
                 }
-                else if ((data[j][i+1] != "Airconditioner") && batteryWh > Consumption && count < MaxperDay && totalCount < Cycles && days[i]) {
+                else if ((data[j][i+1] != "Airconditioner") && batteryWh[i][j] > Consumption && count < MaxperDay && totalCount < Cycles && days[i]) {
                     data[j][i + 1] = "Dishwasher";
                     //System.out.println(data);
-                    batteryWh = batteryWh - Consumption;
+                    batteryWh[i][j+1] = batteryWh[i][j] - Consumption;
                     count += 1;
                     totalCount += 1;
+                    batteryWh[i][j + 1] = batteryWh[i][j] - Consumption ; //+ productionArray[i][j] is not added as it has been previously added
                 }
                 else{
-                    batteryWh = batteryWh + productionArray[i][j];
+                    batteryWh[i][j + 1] = batteryWh[i][j] + productionArray[i][j];
                 }
+                //Nothing else has to be updated with regards to the battery as if no consumption is used then the available production the correct state is already stored in the following cell
             }
         }
+        System.out.println(Arrays.deepToString(batteryWh));
         scheduleWashingMachine(WashingMachineCycles, WashingMachineDays, WashingMachineMaxQuota, WashingMachineConsumption);
     }
 

@@ -54,7 +54,7 @@ public class Scheduler {
     static RetrieveButton retrievebutton = new RetrieveButton("Get Schedule");
     static JButton ScheduletoDashboard = new JButton("Return to Dashboard");
     static JPanel buttonContainerPanel = new JPanel(new FlowLayout());
-    
+
     public Scheduler(){
         //Instantiates Panels
         HeaderPanel headerPanel1 = new HeaderPanel();
