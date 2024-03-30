@@ -19,10 +19,10 @@ public class RetrieveButton extends JButton{
     }
     public static void displaySchedule(){
         ScheduleData sdfunctions = new ScheduleData();
+        //Scheduler.resetTable();
         sdfunctions.retrieveVariables();
         //ScheduleData.data[0][1] = "test";
         //System.out.println(Arrays.deepToString(ScheduleData.data));
-        //Scheduler.setTable();
     }
 }
 

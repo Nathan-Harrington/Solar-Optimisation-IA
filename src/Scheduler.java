@@ -3,6 +3,7 @@ import DashboardPanelsandAPI.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.util.Arrays;
 
 public class Scheduler {
     static JPanel schedulerwindow = new JPanel(new BorderLayout());
@@ -12,14 +13,21 @@ public class Scheduler {
     static JTable scheduleTable = new JTable(scheduleModel);
     static JScrollPane tableContainerPanel = new JScrollPane(scheduleTable);
     public static void setTable(){
+        //scheduleTable.repaint();
         DefaultTableModel scheduleModel = new DefaultTableModel(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
         scheduleTable.setModel(scheduleModel);
-        tableContainerPanel.add(scheduleTable);
-        centerContainerPanel.add(tableContainerPanel);
+        //tableContainerPanel.add(scheduleTable);
+        //centerContainerPanel.add(tableContainerPanel);
     }
-        //JTable scheduleTable = new JTable(data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
-        //JScrollPane tableContainerPanel = new JScrollPane(scheduleTable);
-        //return tableContainerPanel;
+    //public static void resetTable(){
+        //scheduleTable.repaint();
+        //for(int i = 0; i < ScheduleData.data.length; i++){
+            //Arrays.fill(ScheduleData.data[i], "No Device");
+       // }
+       // DefaultTableModel scheduleModel = new DefaultTableModel(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
+        //scheduleTable.setModel(scheduleModel);
+       // tableContainerPanel.add(scheduleTable);
+        //centerContainerPanel.add(tableContainerPanel);
     //}
     public Scheduler(){
         //Instantiates Panels
