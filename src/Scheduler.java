@@ -12,6 +12,7 @@ public class Scheduler {
     static DefaultTableModel scheduleModel = new DefaultTableModel(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
     static JTable scheduleTable = new JTable(scheduleModel);
     static JScrollPane tableContainerPanel = new JScrollPane(scheduleTable);
+    //UPDATES TABLE
     public static void setTable(){
         //scheduleTable.repaint();
         DefaultTableModel scheduleModel = new DefaultTableModel(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
@@ -19,6 +20,7 @@ public class Scheduler {
         //tableContainerPanel.add(scheduleTable);
         //centerContainerPanel.add(tableContainerPanel);
     }
+    //RESETS TABLE
     public static void resetTable(){
         ScheduleData.data = new Object[][]{{"0:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
                 {"1:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
@@ -48,20 +50,14 @@ public class Scheduler {
         DefaultTableModel scheduleModel = new DefaultTableModel(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
         scheduleTable.setModel(scheduleModel);
     }
-    //public static void resetTable(){
-        //scheduleTable.repaint();
-        //for(int i = 0; i < ScheduleData.data.length; i++){
-            //Arrays.fill(ScheduleData.data[i], "No Device");
-       // }
-       // DefaultTableModel scheduleModel = new DefaultTableModel(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
-        //scheduleTable.setModel(scheduleModel);
-       // tableContainerPanel.add(scheduleTable);
-        //centerContainerPanel.add(tableContainerPanel);
-    //}
+    static RetrieveButton retrievebutton = new RetrieveButton("Get Schedule");
+    static JButton ScheduletoDashboard = new JButton("Return to Dashboard");
+    static JPanel buttonContainerPanel = new JPanel(new FlowLayout());
+
     public Scheduler(){
         //Instantiates Panels
         HeaderPanel headerPanel1 = new HeaderPanel();
-        JPanel buttonContainerPanel = new JPanel(new FlowLayout());
+
 
         //centerContainerPanel styling
         centerContainerPanel.setLayout(new BoxLayout(centerContainerPanel, BoxLayout.Y_AXIS));
@@ -69,12 +65,16 @@ public class Scheduler {
         //Instantiates Header
         HeaderLabel header1 = new HeaderLabel();
         header1.setText("Scheduler");
-        RetrieveButton retrievebutton = new RetrieveButton("Get Schedule");
+
+
+        //Back to Dashboard
+        ScheduletoDashboard.addActionListener(e -> displayDashboard());
 
         //Adds Components to Panels
         headerPanel1.add(header1);
         buttonContainerPanel.add(appliancebutton);
         buttonContainerPanel.add(retrievebutton);
+        buttonContainerPanel.add(ScheduletoDashboard);
 
         //Add button panel to central panel
         centerContainerPanel.add(buttonContainerPanel);
@@ -85,5 +85,10 @@ public class Scheduler {
         schedulerwindow.add(headerPanel1, BorderLayout.NORTH);
         schedulerwindow.add(centerContainerPanel, BorderLayout.CENTER);
         Main.window1.add(schedulerwindow);
+    }
+
+    public static void displayDashboard(){
+        Dashboard.dashboardwindow.setVisible(true);
+        Scheduler.schedulerwindow.setVisible(false);
     }
 }

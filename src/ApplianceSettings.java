@@ -9,12 +9,17 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
     Connection conn = db.connect_to_db("solardb", "postgres", "solar");
     //PANELS
     JPanel numTimesPanel = new JPanel(new FlowLayout()); //panel for the input of the number of times needed to be run input
-    JPanel basePanel = new JPanel(new GridLayout(3, 1, 10, 10)); //namesake panel
+    JPanel maxDailyPanel = new JPanel(new FlowLayout()); //panel for the input of the number of times needed to be run input
+    JPanel basePanel = new JPanel(new GridLayout(4, 1, 10, 10)); //namesake panel
     JPanel boolPanel = new JPanel(new FlowLayout()); //Panel for Boolean toggles
     JPanel saveBoolPanel = new JPanel(new FlowLayout()); //Save Button Panel for Appliances
     //NUMBER OF TIMES COMPONENT
-    JTextField numberOfTimes = new JTextField("Enter number of times needed to run appliance"); //NEED TO SANITISE INPUT?
+    JTextField numberOfTimes = new JTextField("Enter number of times to run appliance"); //NEED TO SANITISE INPUT?
     JButton numTimesButton = new JButton("Save"); //COULD MAKE SAVE
+
+    //NUMBER OF TIMES COMPONENT
+    JTextField maxDaily = new JTextField("Enter maximum number of cycles per day"); //NEED TO SANITISE INPUT?
+    JButton maxDailyButton = new JButton("Save"); //COULD MAKE SAVE
 
     //Boolean Components
     JToggleButton Monday = new JToggleButton();
@@ -43,6 +48,11 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
         numTimesPanel.add(numberOfTimes);
         numTimesPanel.add(numTimesButton);
 
+        //COMPONENTS FOR MAX DAILY
+        basePanel.add(maxDailyPanel);
+        this.add(basePanel);
+        maxDailyPanel.add(maxDaily);
+        maxDailyPanel.add(maxDailyButton);
 
         //BOOLEAN VARIABLES COULD TURN INTO A FUNCTION?
         boolean boolMonday = db.return_bool_day(conn, "appliances", "monday", name);
@@ -110,14 +120,16 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
         String[] weekNames = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"};
 
         //INPUT BUTTON
-        numTimesButton.addActionListener(e -> storeToDB(name));
-        Monday.addActionListener(e -> updateBoolText(Monday));
-        Tuesday.addActionListener(e -> updateBoolText(Tuesday));
-        Wednesday.addActionListener(e -> updateBoolText(Wednesday));
-        Thursday.addActionListener(e -> updateBoolText(Thursday));
-        Friday.addActionListener(e -> updateBoolText(Friday));
-        Saturday.addActionListener(e -> updateBoolText(Saturday));
-        Sunday.addActionListener(e -> updateBoolText(Sunday));
+        numTimesButton.addActionListener(e -> storeToDB(name, "appliance_cycles_num", numberOfTimes));
+        maxDailyButton.addActionListener(e -> storeToDB(name, "max_daily", maxDaily));
+
+        Monday.addActionListener(e -> updateBoolText(Monday, "Monday"));
+        Tuesday.addActionListener(e -> updateBoolText(Tuesday, "Tuesday"));
+        Wednesday.addActionListener(e -> updateBoolText(Wednesday, "Wednesday"));
+        Thursday.addActionListener(e -> updateBoolText(Thursday, "Thursday"));
+        Friday.addActionListener(e -> updateBoolText(Friday, "Friday"));
+        Saturday.addActionListener(e -> updateBoolText(Saturday, "Saturday"));
+        Sunday.addActionListener(e -> updateBoolText(Sunday, "Sunday"));
         saveBool.addActionListener(e -> saveBoolstoDb(weekNames, buttons, name)); //NEeDS TO BE LOOPED AND GENERALISED
 
         //BOOLEAN COMPONENTS
@@ -139,22 +151,22 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
         Scheduler.centerContainerPanel.add(appliance, BorderLayout.CENTER);
         appliance.setVisible(true);
     }
-    public void storeToDB(String name){ //NEEDS TO BE REPEATED AND GENERALISED ERROR MESSAGE AS WELL !!!!!!!!!!
-            int temp = Integer.valueOf(numberOfTimes.getText());
-            numberOfTimes.setText("Input Recieved");
-            db.update_column_int(conn, "appliances", name, temp, "appliance_cycles_num");
+    public void storeToDB(String name, String column_name, JTextField input){ //NEEDS TO BE REPEATED AND GENERALISED ERROR MESSAGE AS WELL !!!!!!!!!!
+            int temp = Integer.valueOf(input.getText());
+            input.setText("Input Recieved");
+            db.update_column_int(conn, "appliances", name, temp, column_name);
             Scheduler.resetTable();
     }
-    public void updateBoolText(JToggleButton day){ //NEEDS TO BE REPEATED AND GENERALISED
+    public void updateBoolText(JToggleButton day, String dayname){ //NEEDS TO BE REPEATED AND GENERALISED
         if(day.isSelected()){ //Check on Button Click
-            day.setText("Run on Monday");
+            day.setText(String.format("Run on %s", dayname));
         }
         else{
-            day.setText("Don't Run on Monday");
+            day.setText(String.format("Don't Run on %s", dayname));
         }
     }
     public void saveBoolstoDb(String[] names, JToggleButton[] days, String applianceType){ //NEEDS TO BE REPEATED AND GENERALISED
-        for(int i = 0; i < 2; i++) { //Check i < 7 when adding rest of the days
+        for(int i = 0; i < 7; i++) { //Check i < 7 when adding rest of the days
             String daystring = String.format("appliance_%s", names[i]);
             boolean newValue = days[i].isSelected();
             System.out.println(applianceType);
