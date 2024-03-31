@@ -63,6 +63,7 @@ public class MetricPanel extends JPanel {
 
         this.add(new JScrollPane(weatherTable));
         cloudCoverArray = setCloudCoverArray(cloudCoverArray);
+        System.out.print("CLoud cover: " +Arrays.toString(cloudCoverArray));
         WeatherData = setWeatherData(WeatherData); //Sets Table
         //TESTING
         System.out.println(dayNum);
@@ -90,9 +91,14 @@ public class MetricPanel extends JPanel {
             startIndex = ((8 - dayNum)*24);
             endIndex = startIndex + 168;
         }
+        if(dayNum == 1){
+            startIndex = 0;
+            endIndex = 168;
+        }
         String[] slice = new String[endIndex - startIndex];
         for(int i = 0; i < slice.length; i ++){
             slice[i] = cloudCoverArray[startIndex + i];
+            System.out.println(Arrays.toString(cloudCoverArray));
         }
         return slice;
     }

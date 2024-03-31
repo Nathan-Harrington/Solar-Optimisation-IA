@@ -40,7 +40,7 @@ public class WeatherAPI {
                 scanner.close();
 
                 returnString = informationString.toString();
-                System.out.println(returnString);
+                System.out.println("Return String" + returnString);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -48,7 +48,7 @@ public class WeatherAPI {
 
         //Sanitising Output
         cloudCoverStart = returnString.lastIndexOf("cloud_cover") + 14; //stores index of cloud_coverage percentages
-        System.out.println(cloudCoverStart);
+        //System.out.println(cloudCoverStart);
         cloudCoverEnd = returnString.length() - 3; //removes end of string
         returnCloudCover = returnString.substring(cloudCoverStart, cloudCoverEnd);
         cloudCoverArray = returnCloudCover.split(",");
