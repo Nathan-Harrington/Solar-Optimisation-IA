@@ -9,6 +9,6 @@ public class DecorativePanel extends JPanel {
         this.setPreferredSize(new Dimension(100,100));
 
         //Styling
-        this.setBackground(new Color(0x8FC0A9));
+        this.setBackground(new Color(0x95afc0));
     }
 }

@@ -13,9 +13,9 @@ public class RefreshPVButton extends JButton {
         this.setText(text);
 
         //Styling
-        this.setBackground(new Color(0x8FC089));
+        this.setBackground(new Color(0x686de0));
         this.setForeground(new Color(0xFAF3DD));
-        Border border = BorderFactory.createLineBorder(new Color(0x68b0ab), 3);
+        Border border = BorderFactory.createLineBorder(new Color(0x22a6b3), 2);
         this.setBorder(border);
     }
     public void displayBatteryButton(){

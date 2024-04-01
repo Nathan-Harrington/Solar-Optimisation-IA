@@ -1,6 +1,7 @@
 package DashboardPanelsandAPI;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.sql.Connection;
 import java.time.DayOfWeek;
@@ -46,10 +47,18 @@ public class MetricPanel extends JPanel {
 
     static JLabel batteryLevel = new JLabel("Battery Percentage (%) : " + API.GetBatteryLevel() + "%");
     static JLabel energyProduced = new JLabel("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
-    static JTable weatherTable = new JTable(WeatherData, WeatherTable.columnNames);
+    static JTable weatherTable = new JTable(WeatherData, new String[]{"Hour", "Monday (% Cloud Coverage)", "Tuesday (% Cloud Coverage)", "Wednesday (% Cloud Coverage)", "Thursday (% Cloud Coverage)", "Friday (% Cloud Coverage)", "Saturday (% Cloud Coverage)", "Sunday (% Cloud Coverage)"});
+
     static DbFunctions db = new DbFunctions();
     static Connection conn = db.connect_to_db("solardb", "postgres", "solar");
     public MetricPanel(){
+        //Style table
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        for(int x=0;x<8;x++){
+            weatherTable.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+        }
+        //this.setBackground(new Color(0x95afc0));
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         batteryLevel.setAlignmentX(Component.CENTER_ALIGNMENT);
         energyProduced.setAlignmentX(Component.CENTER_ALIGNMENT);

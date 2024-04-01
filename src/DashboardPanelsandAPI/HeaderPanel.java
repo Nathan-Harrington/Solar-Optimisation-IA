@@ -11,6 +11,6 @@ public class HeaderPanel extends JPanel{
 
         //Styling
 
-        this.setBackground(new Color(0x8FC0A9));
+        this.setBackground(new Color(0x95afc0));
     }
 }

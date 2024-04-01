@@ -1,13 +1,11 @@
 import DashboardPanelsandAPI.*;
-
-import javax.swing.*;
-import java.awt.*;
-
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
 public class Dashboard {
     //COULD MAKE THIS MAIN CLASS ITS OWN DASHBOARD CLASS WHICH IS THEN CALLED IN THE MAIN CLASS WHICH WOULD HAVE TO BE MADE AGAIN
     //Instantiates Button
-    static SchedulerButton takeToScheduler = new SchedulerButton("Scheduler"); //Declare Button Publicly
-    static RefreshPVButton refreshPVMetrics = new RefreshPVButton("Refresh PV Metrics"); //Declare Button Publicly
+    static SchedulerButton takeToScheduler = new SchedulerButton("Press to go to Scheduler"); //Declare Button Publicly
+    static RefreshPVButton refreshPVMetrics = new RefreshPVButton("Press to refresh PV Metrics"); //Declare Button Publicly
     static JPanel dashboardwindow = new JPanel(new BorderLayout());
     public Dashboard() {
         //Instantiates Window
@@ -23,6 +21,7 @@ public class Dashboard {
         DecorativePanel decorativePanel1 = new DecorativePanel();
         DecorativePanel decorativePanel2 = new DecorativePanel();
         DecorativePanel decorativePanel3 = new DecorativePanel();
+
 
         //Instantiates Header
         HeaderLabel header1 = new HeaderLabel();
@@ -44,10 +43,10 @@ public class Dashboard {
         dashboardwindow.add(decorativePanel2, BorderLayout.EAST);
         dashboardwindow.add(decorativePanel3, BorderLayout.SOUTH);
 
+        //Initialises Dashboard
         Main.window1.add(dashboardwindow);
         Main.window1.setVisible(true);
 
 
     }
-
 }
