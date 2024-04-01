@@ -2,6 +2,7 @@ import DashboardPanelsandAPI.*;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.Arrays;
@@ -56,6 +57,11 @@ public class Scheduler {
     static JPanel buttonContainerPanel = new JPanel(new FlowLayout());
 
     public Scheduler(){
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        for(int x=0;x<8;x++){
+            scheduleTable.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+        }
         //Instantiates Panels
         HeaderPanel headerPanel1 = new HeaderPanel();
 
@@ -72,9 +78,9 @@ public class Scheduler {
         ScheduletoDashboard.addActionListener(e -> displayDashboard());
         ScheduletoDashboard.setPreferredSize(new Dimension(200,75));
         //Styling
-        ScheduletoDashboard.setBackground(new Color(0x8FC089));
+        ScheduletoDashboard.setBackground(new Color(0x686de0));
         ScheduletoDashboard.setForeground(new Color(0xFAF3DD));
-        Border border = BorderFactory.createLineBorder(new Color(0x68b0ab), 3);
+        Border border = BorderFactory.createLineBorder(new Color(0x22a6b3), 2);
         ScheduletoDashboard.setBorder(border);
 
         //Adds Components to Panels

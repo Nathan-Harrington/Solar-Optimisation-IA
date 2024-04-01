@@ -1,6 +1,7 @@
 import DashboardPanelsandAPI.*;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
+
+import javax.swing.*;
+import java.awt.*;
 public class Dashboard {
     //COULD MAKE THIS MAIN CLASS ITS OWN DASHBOARD CLASS WHICH IS THEN CALLED IN THE MAIN CLASS WHICH WOULD HAVE TO BE MADE AGAIN
     //Instantiates Button

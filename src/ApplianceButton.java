@@ -12,9 +12,9 @@ public class ApplianceButton extends JButton{
         this.setText(text);
 
         //Styling
-        this.setBackground(new Color(0x8FC089));
+        this.setBackground(new Color(0x686de0));
         this.setForeground(new Color(0xFAF3DD));
-        Border border = BorderFactory.createLineBorder(new Color(0x68b0ab), 3);
+        Border border = BorderFactory.createLineBorder(new Color(0x22a6b3), 2);
         this.setBorder(border);
 
         //
@@ -25,6 +25,21 @@ public class ApplianceButton extends JButton{
         JButton dishwasherButton = new JButton("Dishwasher Settings");
         JButton washingButton = new JButton("Washing Machine Settings");
         JButton airconButton = new JButton("Air Conditioning Settings");
+
+        //Styling Button
+      dishwasherButton.setBackground(new Color(0x686de0));
+      washingButton.setBackground(new Color(0x686de0));
+      airconButton.setBackground(new Color(0x686de0));
+      exit.setBackground(new Color(0x686de0));
+      dishwasherButton.setForeground(new Color(0xFAF3DD));
+      washingButton.setForeground(new Color(0xFAF3DD));
+      airconButton.setForeground(new Color(0xFAF3DD));
+      exit.setForeground(new Color(0xFAF3DD));
+      Border border = BorderFactory.createLineBorder(new Color(0x22a6b3), 2);
+      dishwasherButton.setBorder(border);
+      washingButton.setBorder(border);
+      airconButton.setBorder(border);
+
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

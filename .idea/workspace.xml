@@ -6,16 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="420dab9b-564b-4cc0-8b86-3fb8609c4d11" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ApplianceButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplianceButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/CenterContainerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/CenterContainerPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/DecorativePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/DecorativePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/HeaderLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/HeaderLabel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/HeaderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/HeaderPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/MetricPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/MetricPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/WeatherTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/WeatherTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DbFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DbFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RefreshPVButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RefreshPVButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SchedulerButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SchedulerButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/WeatherTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RetrieveButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RetrieveButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Scheduler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Scheduler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,24 +46,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Nathan Harrington/School/IB/Solar-Optimisation-IA&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Nathan Harrington/School/IB/Solar-Optimisation-IA/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Nathan Harrington/School/IB/Solar-Optimisation-IA",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "onboarding.tips.debug.path": "C:/Nathan Harrington/School/IB/Solar-Optimisation-IA/src/Main.java",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="DashboardPanelsandAPI" />
@@ -125,7 +125,7 @@
       <workItem from="1711836141324" duration="22000" />
       <workItem from="1711875564663" duration="616000" />
       <workItem from="1711892336079" duration="773000" />
-      <workItem from="1711960299226" duration="5333000" />
+      <workItem from="1711960299226" duration="12515000" />
     </task>
     <servers />
   </component>

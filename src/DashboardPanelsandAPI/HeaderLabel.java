@@ -1,6 +1,6 @@
 package DashboardPanelsandAPI;
 
-import javax.swing.*;
+import javax.swing.JLabel;
 import java.awt.*;
 import javax.swing.border.*;
 
