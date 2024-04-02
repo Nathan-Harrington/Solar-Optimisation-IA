@@ -21,6 +21,10 @@ public class Scheduler {
         scheduleTable.setModel(scheduleModel);
         //tableContainerPanel.add(scheduleTable);
         //centerContainerPanel.add(tableContainerPanel);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        for(int x=0;x<8;x++){
+            scheduleTable.getColumnModel().getColumn(x).setCellRenderer( centerRenderer );
+        }
     }
     //RESETS TABLE
     public static void resetTable(){
@@ -51,6 +55,13 @@ public class Scheduler {
         };
         DefaultTableModel scheduleModel = new DefaultTableModel(ScheduleData.data, new String[]{"Hour", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
         scheduleTable.setModel(scheduleModel);
+        center();
+    }
+    public static void center(){ //CENTER DOES NOT WORK
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        for(int i=0;i<8;i++){
+            scheduleTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
     }
     static RetrieveButton retrievebutton = new RetrieveButton("Get Schedule");
     static JButton ScheduletoDashboard = new JButton("Return to Dashboard");
