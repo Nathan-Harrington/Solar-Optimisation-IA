@@ -71,7 +71,7 @@ public class MetricPanel extends JPanel {
         this.add(Box.createRigidArea(new Dimension(0, 50)));
 
         this.add(new JScrollPane(weatherTable));
-        cloudCoverArray = setCloudCoverArray(cloudCoverArray);
+        cloudCoverArray = setCloudCoverArray();
         System.out.print("CLoud cover: " +Arrays.toString(cloudCoverArray));
         WeatherData = setWeatherData(WeatherData); //Sets Table
         //TESTING
@@ -92,15 +92,15 @@ public class MetricPanel extends JPanel {
         energyProduced.setText("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
         System.out.println("Energy Produced (kwh) : " + API.GetEnergyProduced() + "kwh");
     }
-    public String[] setCloudCoverArray(String[] array) { //GRAPH NOW LINE UP!!! MONDAY = MONDAY etc...
+    public String[] setCloudCoverArray() {
         int startIndex = 0;
         int endIndex = 0;
         //Displays Table by Assigning values from Array
-        if (dayNum != 1) {
-            startIndex = ((8 - dayNum)*24);
+        if (dayNum != 1) { //Checks if it is not Monday
+            startIndex = ((8 - dayNum)*24); //sets the index of the API from which the cloud coverage
             endIndex = startIndex + 168;
         }
-        if(dayNum == 1){
+        if(dayNum == 1){ //if Monday
             startIndex = 0;
             endIndex = 168;
         }
@@ -121,6 +121,8 @@ public class MetricPanel extends JPanel {
         }
         return sampleData;
     }
+
+
     //Updates Cloud Coverage Value for each Given Day to the Database
     public static void updateWeatherDb(String [] data){
         String[] days = new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"}; //Not Really Monday, Not Really Tuesday so forth!!!

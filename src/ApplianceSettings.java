@@ -161,27 +161,27 @@ public class ApplianceSettings extends JInternalFrame { //SHOULD BE MODEL ON HOW
         Scheduler.centerContainerPanel.add(appliance, BorderLayout.CENTER);
         appliance.setVisible(true);
     }
-    public void storeToDB(String name, String column_name, JTextField input, JLabel errorDisplay){ //NEEDS TO BE REPEATED AND GENERALISED ERROR MESSAGE AS WELL !!!!!!!!!!
-        try {
-            int temp = Integer.valueOf(input.getText());
-            if((column_name.equals("max_daily") && temp < 7) || (column_name.equals("appliance_cycles_num") && temp < 43)){
+    public void storeToDB(String name, String column_name, JTextField input, JLabel errorDisplay){
+        try { //first try the following...
+            int temp = Integer.valueOf(input.getText()); //take text field input and convert it into a string
+            if((column_name.equals("max_daily") && temp < 7 && temp >0) || (column_name.equals("appliance_cycles_num") && temp < 43)){
                 errorDisplay.setText("");//check number is not too large or negative
-                input.setText("Input Recieved");
-                db.update_column_int(conn, "appliances", name, temp, column_name);
-                Scheduler.resetTable();
-                if((column_name.equals("appliance_cycles_num") && temp > 30)){
-                    errorDisplay.setText("The schedule may not be able to schedule the requisite number of cycles");
+                input.setText("Input Received"); //Tell user their input was received
+                db.update_column_int(conn, "appliances", name, temp, column_name); //update database
+                Scheduler.resetTable(); //reset schedule to be regenerated
+                if((column_name.equals("appliance_cycles_num") && temp > 30)){ //check number of cycles is not greater than 30
+                    errorDisplay.setText("The schedule may not be able to schedule the requisite number of cycles"); //warn excessive scheduling
                 }
             }
             else if(column_name.equals("max_daily")){
-                errorDisplay.setText("Please enter a number between 1 and 6");
+                errorDisplay.setText("Please enter a number between 1 and 6"); //warn number is not in correct range
             }
             else if(column_name.equals("appliance_cycles_num")){
-                errorDisplay.setText("Please enter a number between 1 and 42");
+                errorDisplay.setText("Please enter a number between 1 and 42"); //warn number is not in correct range
             }
         }
-        catch(NumberFormatException exception){
-            errorDisplay.setText("Please enter a number");
+        catch(NumberFormatException exception){ //if an exception is thrown try this instead...
+            errorDisplay.setText("Please enter a number"); //set error
         }
 
     }

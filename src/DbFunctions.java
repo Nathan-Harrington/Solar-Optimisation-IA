@@ -73,7 +73,7 @@ public class DbFunctions {
             String query = String.format("select %s from appliances where appliance_name = '%s'", column_name, appliance_name);
             statement = conn.createStatement();
             rs = statement.executeQuery(query);
-            while(rs.next()){ //.next() required to read from database otherwise rs set not positioned correctly!
+            while(rs.next()){
                 returnInt = rs.getInt(column_name);
             }
             System.out.println(returnInt);
