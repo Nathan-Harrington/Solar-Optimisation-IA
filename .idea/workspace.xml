@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Solar-Optimisation-IA:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="420dab9b-564b-4cc0-8b86-3fb8609c4d11" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ApplianceSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApplianceSettings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/MetricPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/MetricPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DashboardPanelsandAPI/WeatherAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardPanelsandAPI/WeatherAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DbFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DbFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ScheduleData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ScheduleData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +55,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Nathan Harrington/School/IB/Solar-Optimisation-IA/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
@@ -124,6 +125,13 @@
       <workItem from="1711960299226" duration="12515000" />
       <workItem from="1711979317037" duration="2687000" />
       <workItem from="1712018131156" duration="21324000" />
+      <workItem from="1714652175437" duration="790000" />
+      <workItem from="1714653757113" duration="177000" />
+      <workItem from="1715989645970" duration="2789000" />
+      <workItem from="1716701572158" duration="2403000" />
+      <workItem from="1716771931184" duration="7514000" />
+      <workItem from="1716811784386" duration="641000" />
+      <workItem from="1716857294850" duration="5276000" />
     </task>
     <servers />
   </component>

@@ -130,12 +130,17 @@ public class ScheduleData{
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}};
 
     public void scheduleAircon(int Cycles, Boolean[] days, int MaxperDay, int Consumption){
-        int totalCount = 0;
+        int totalCount = 0; //number of times Air Con has been scheduled in the week
+        outerLoop:
         for(int i = 0; i < 7; i++){
-            int count = 0;
+            int count = 0; //number of times Air Con has been scheduled in the day
             for(int j = 6; j < 20; j++){
+                if (!days[i]) {
+                    // IF USER HAS SET DAY TO FALSE AUTOMATICALLY INCREMENT
+                    continue outerLoop;
+                }
                 //CHECKS IF PREDICTED ENERGY IN THE HOUR IS GREATER THAN CONSUMPTION
-                if((productionArray[i][j] > Consumption) && (count < MaxperDay)  && (totalCount < Cycles) && days[i]){
+                if((productionArray[i][j] > Consumption) && (count < MaxperDay)  && (totalCount < Cycles)){  //&& days[i]
                     count += 1;
                     totalCount += 1;
                     data[j][i+1] = "Airconditioner";
@@ -143,7 +148,7 @@ public class ScheduleData{
                     productionArray[i][j] = productionArray[i][j] - Consumption;
                 }
                 //CHECKS IF STORED BATTERY ENERGY IS SUFFICIENT
-                else if ((batteryWh[i][j] > Consumption) && (count < MaxperDay) && (totalCount < Cycles) && days[i]) {
+                else if ((batteryWh[i][j] > Consumption) && (count < MaxperDay) && (totalCount < Cycles)) {
                     count += 1;
                     totalCount += 1;
                     data[j][i + 1] = "Airconditioner";
@@ -156,7 +161,7 @@ public class ScheduleData{
 
             }
         }
-        //CALLS THE DISHWASHER FUNTION
+        //CALLS THE DISHWASHER FUNCTION
         scheduleDishwasher(DishwasherCycles, DishwasherDays, DishwasherMaxQuota, DishwasherConsumption);
         Scheduler.setTable();
     }
