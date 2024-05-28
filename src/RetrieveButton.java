@@ -8,9 +8,9 @@ public class RetrieveButton extends JButton{
 
     public RetrieveButton(String text){
         this.setPreferredSize(new Dimension(200,75));
-        this.addActionListener(e -> System.out.println("schedule input received"));
+        this.addActionListener(e -> System.out.println("schedule input received")); //call function to retrieve database values
         this.setText(text);
-        this.addActionListener(e -> displaySchedule());
+        this.addActionListener(e -> displaySchedule()); //call function to display the schedule
         //Styling
         this.setBackground(new Color(0x686de0));
         this.setForeground(new Color(0xFAF3DD));
@@ -19,10 +19,7 @@ public class RetrieveButton extends JButton{
     }
     public static void displaySchedule(){
         ScheduleData sdfunctions = new ScheduleData();
-        //Scheduler.resetTable();
         sdfunctions.retrieveVariables();
-        //ScheduleData.data[0][1] = "test";
-        //System.out.println(Arrays.deepToString(ScheduleData.data));
     }
 }
 

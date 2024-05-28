@@ -22,7 +22,6 @@ public class DbFunctions {
         }
         return conn;
     }
-//COULD GENERALISE WITH MORE ARGUMENTS TO A GENERAL UPDATE
     public static void update_column_int(Connection conn, String table_name, String appliance_name, int new_value, String column_name){
         Statement statement;
         try{

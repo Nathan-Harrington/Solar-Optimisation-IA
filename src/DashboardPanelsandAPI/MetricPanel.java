@@ -15,9 +15,6 @@ public class MetricPanel extends JPanel {
     public static LocalDateTime now = LocalDateTime.now(); //import Time
     public static DayOfWeek dayofWeek = DayOfWeek.from(now);
     public static int dayNum = dayofWeek.getValue();
-    public static String currentday = dayofWeek.name();
-    //OTHER METRICS SIMPLY NOT PROVIDED BY DashboardPanels.API PERHAPS PROVIDE ALTERNATE METRICS
-    //JLabel testRaw = new JLabel(DashboardPanels.API.GetRawReturn()); Test Returns entire response
     static String[] cloudCoverArray = WeatherAPI.getCloudCoverArray();
     static Object[][] WeatherData = {{"0:00", "22%", "35%", "56%", "23%", "12%", "52%", "98%"},
             {"1:00", "75%", "35%", "56%", "23%", "12%", "52%", "98%"},
@@ -78,8 +75,6 @@ public class MetricPanel extends JPanel {
         System.out.println(dayNum);
         System.out.println(dayofWeek);
         //System.out.println(WeatherData[0][0]); //[x][y], [x] = row & [y] = column
-        //System.out.println(WeatherData[0][1]);
-        //System.out.println(WeatherData[1][0]);
         //SETS Database Values
         updateWeatherDb(cloudCoverArray);
     }

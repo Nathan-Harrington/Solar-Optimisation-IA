@@ -8,7 +8,7 @@ public class WeatherAPI {
     private static String[] cloudCoverArray = null;
     private static Integer cloudCoverStart = 0;
     private static Integer cloudCoverEnd = 0;
-    public static void QueryAPI(){
+    public static void QueryAPI(){ //help from Random Code. (2021). Java: How to connect to an API using Java.
         try {
             URL url = new URL("https://api.open-meteo.com/v1/forecast?latitude=-35.42&longitude=149.24&hourly=cloud_cover&timezone=Australia%2FSydney&forecast_days=14");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

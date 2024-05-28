@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class ScheduleData{
 
-    float[][] productionArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, //EACH VALUE DEMARCATES HOW MUCH UNASSIGNED IS PRODUCED
+    float[][] productionArray = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, //EACH VALUE DEMARCATES HOW MUCH PRODUCTION IS IN AN HOUR
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -55,7 +55,7 @@ public class ScheduleData{
             {"21:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
             {"22:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"},
             {"23:00", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device", "No Device"}
-    };
+    }; //data of schedule displyed to user which is updated.
     public void retrieveVariables(){
         for(int i = 0; i < 7; i++){
             //CHECK IF IT IS SUMMER
@@ -113,12 +113,8 @@ public class ScheduleData{
                 }
             }
         }
-       // for(int i = 0; i < 2; i ++){
             scheduleAircon(AirconCycles, AirconDays, AirconMaxQuota, AirconConsumption);
-            //if(i == 0){
-                //Scheduler.resetTable();
-            //}
-        //}
+
     }
     //FIRST INSTANCE OF SCHEDULING
     static float[][] batteryWh = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, //EACH VALUE DEMARCATES AVAILABLE POWER IN THAT HOUR SLOT
@@ -206,11 +202,9 @@ public class ScheduleData{
                     totalCount += 1;
                     batteryWh[i][j + 1] = batteryWh[i][j] + productionArray[i][j] - Consumption;
                     productionArray[i][j] = productionArray[i][j] - Consumption;
-                    //System.out.println(Arrays.deepToString(data));
                 }
                 else if ((data[j][i+1] != "Airconditioner" && data[j][i+1] != "Dishwasher") && batteryWh[i][j] > Consumption && count < MaxperDay && totalCount < Cycles && days[i]) {
                     data[j][i + 1] = "Washing Machine";
-                    //System.out.println(data);
                     batteryWh[i][j+1] = batteryWh[i][j + 1] - Consumption;
                     count += 1;
                     totalCount += 1;

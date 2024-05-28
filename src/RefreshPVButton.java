@@ -8,7 +8,7 @@ public class RefreshPVButton extends JButton {
     public RefreshPVButton(String text){
         this.setPreferredSize(new Dimension(200,75));
         this.addActionListener(e -> System.out.println("input 2 received"));
-        this.addActionListener(e -> displayBatteryButton());
+        this.addActionListener(e -> displayBatteryButton()); //call method to display PV metrics
 
         this.setText(text);
 
